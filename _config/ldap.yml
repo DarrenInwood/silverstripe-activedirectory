@@ -1,18 +1,6 @@
 ---
 Name: ldapconfig
 ---
-Director:
-  rules:
-    'LDAPSecurity': LDAPSecurityController
-    'LDAPDebug': LDAPDebugController
-
-Group:
-  extensions:
-    - LDAPGroupExtension
-Member:
-  extensions:
-    - LDAPMemberExtension
-
 LDAPAuthenticator:
   name: "LDAP"
 
@@ -39,3 +27,19 @@ SS_Backtrace:
     -
       - 'LDAPService'
       - 'passwordHistoryWorkaround'
+
+---
+Only:
+  classexists: '\Zend\Ldap\Ldap'
+---
+Director:
+  rules:
+    'LDAPSecurity': LDAPSecurityController
+    'LDAPDebug': LDAPDebugController
+
+Group:
+  extensions:
+    - LDAPGroupExtension
+Member:
+  extensions:
+    - LDAPMemberExtension
